@@ -38,7 +38,9 @@ export default function MateriaSelector({ materias, onSelectMateria, materiasSel
   const [selectedMateria, setSelectedMateria] = useState<Materia | null>(null)
 
   const isSelected = (materiaId: number) => materiasSeleccionadas.includes(materiaId)
-  const canSelect = (materia: Materia) => materia.disponible && materia.inscritos < materia.cupo
+  const canSelect = (materia: Materia | null) => {
+  return !!materia && materia.disponible && materia.inscritos < materia.cupo
+  }
 
   return (
     <div className="space-y-6">
@@ -151,8 +153,8 @@ export default function MateriaSelector({ materias, onSelectMateria, materiasSel
                           </div>
                           <div>
                             <p className="font-medium">Estado:</p>
-                            <p className={`text-sm ${canSelect(selectedMateria!) ? "text-green-600" : "text-red-600"}`}>
-                              {canSelect(selectedMateria!) ? "Disponible" : "No disponible"}
+                            <p className={`text-sm ${canSelect(selectedMateria) ? "text-green-600" : "text-red-600"}`}>
+                              {canSelect(selectedMateria) ? "Disponible" : "No disponible"}
                             </p>
                           </div>
                         </div>

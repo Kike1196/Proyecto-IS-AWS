@@ -1,4 +1,6 @@
 // backend/server.js
+require("dotenv").config()
+
 const express = require("express")
 const cors = require("cors")
 const { Pool } = require("pg")
@@ -7,17 +9,20 @@ const path = require("path")
 const { v4: uuidv4 } = require("uuid")
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 4000
 
 // ============================
 // Configuración PostgreSQL
 // ============================
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "ProyectoIs",
-  password: "270704",
-  port: 5432,
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_HOST || "localhost",
+  database: process.env.DB_NAME || "ProyectoIs",
+  password: process.env.DB_PASSWORD || "270704",
+  port: Number(process.env.DB_PORT) || 5432,
+  ssl: process.env.DB_SSL === "true"
+    ? { rejectUnauthorized: false }
+    : false,
 })
 
 // ============================
@@ -675,7 +680,7 @@ app.delete("/categorias/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));
+//app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));
 //creo hasta aqui y luego aqui ya empiezan los vales
 
 // ============================
