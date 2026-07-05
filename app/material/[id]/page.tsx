@@ -289,3 +289,4 @@ export default function MaterialMateria({ params }: { params: { id: string } }) 
     </div>
   )
 }
+

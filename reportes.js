@@ -68,7 +68,7 @@ function mostrarAdminLogueado() {
 
         // 👉 Si el reporte es de visitas, generar PDF con gráfica
         if (categoria === 'visitas') {
-            fetch('http://localhost:3000/reporte/carreras-visitas')
+            fetch('http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/reporte/carreras-visitas')
                 .then(res => res.json())
                 .then(data => generarPDFConGrafica(data))
                 .catch(err => console.error('Error cargando datos:', err));
@@ -219,7 +219,7 @@ async function generarPDFConGrafica(data) {
   }
 
   // 🟢 Obtener datos del servidor
-  const res = await fetch(`http://localhost:3000${endpoint}`);
+  const res = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com${endpoint}`);
   const materials = await res.json();
 
   // Crear CSV
@@ -288,7 +288,7 @@ async function mostrarVistaPrevia(categoria) {
   let materials = [];
   if (endpoint) {
     try {
-      const res = await fetch(`http://localhost:3000${endpoint}`);
+      const res = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com${endpoint}`);
       materials = await res.json();
     } catch (error) {
       console.error('Error al cargar datos del reporte:', error);
@@ -334,3 +334,5 @@ async function mostrarVistaPrevia(categoria) {
 document.addEventListener("DOMContentLoaded", () => {
     mostrarAdminLogueado();
 });
+
+

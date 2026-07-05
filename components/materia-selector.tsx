@@ -192,3 +192,5 @@ export default function MateriaSelector({ materias, onSelectMateria, materiasSel
     </div>
   )
 }
+
+

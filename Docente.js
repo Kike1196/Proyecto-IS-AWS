@@ -16,7 +16,7 @@ console.log("Usuario actual:", usuarioActual);
 // ===============================
 // Datos del docente logueado
 // ===============================
-const API_URL = "http://localhost:3000";
+const API_URL = "http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com";
 
 if (usuarioActual) {
   document.querySelector(".profile-name").textContent =
@@ -577,7 +577,7 @@ function llenarCategorias() {
   if (!select) return;
 
   // Obtener categorías desde el backend
-  fetch("http://localhost:3000/categorias")
+  fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias")
     .then(res => res.json())
     .then(categorias => {
 
@@ -636,3 +636,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===============================
 cargarAsesorias();
 cargarMateriales();
+
+

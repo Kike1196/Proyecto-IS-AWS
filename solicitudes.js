@@ -63,8 +63,8 @@ async function cargarSolicitudes() {
 
     // Cargar solicitudes pendientes (E01) y devueltas (E04)
     const [responsePendientes, responseDevueltas] = await Promise.all([
-      fetch("http://localhost:3000/solicitudes-prestamo?estado=E01"),
-      fetch("http://localhost:3000/solicitudes-prestamo?estado=E04"),
+      fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/solicitudes-prestamo?estado=E01"),
+      fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/solicitudes-prestamo?estado=E04"),
     ])
 
     if (!responsePendientes.ok || !responseDevueltas.ok) {
@@ -362,7 +362,7 @@ async function aprobarSolicitud(id) {
       throw new Error("ID de solicitud inválido");
     }
 
-    const url = `http://localhost:3000/solicitudes-prestamo/${id}/aprobar`;
+    const url = `http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/solicitudes-prestamo/${id}/aprobar`;
     console.log("[v0] URL de solicitud:", url);
 
     const response = await fetch(url, {
@@ -439,7 +439,7 @@ async function rechazarSolicitud(id) {
       throw new Error("ID de solicitud inválido");
     }
 
-    const url = `http://localhost:3000/solicitudes-prestamo/${id}/rechazar`;
+    const url = `http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/solicitudes-prestamo/${id}/rechazar`;
     console.log("[v0] URL de solicitud:", url);
 
     const response = await fetch(url, {
@@ -509,7 +509,7 @@ async function finalizarSolicitud(id) {
         throw new Error("ID de solicitud inválido");
       }
 
-      const url = `http://localhost:3000/solicitudes-prestamo/${id}/finalizar`;
+      const url = `http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/solicitudes-prestamo/${id}/finalizar`;
       console.log("[v0] URL de solicitud:", url);
 
       const response = await fetch(url, {
@@ -600,3 +600,5 @@ function cerrarSesion() {
     }
   });
 }
+
+

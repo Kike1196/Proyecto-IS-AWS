@@ -253,3 +253,5 @@ export default function SolicitudMaterial({ componente, onSolicitar }: Solicitud
     </div>
   )
 }
+
+

@@ -67,7 +67,7 @@ function cerrarSesion() {
 async function cargarCategorias() {
   try {
     console.log("[v0] Cargando categorías...")
-    const response = await fetch("http://localhost:3000/categorias")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias")
 
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`)
@@ -107,7 +107,7 @@ async function cargarCategorias() {
 //   }
 
 //   try {
-// const response = await fetch(`http://localhost:3000/materiales/${encodeURIComponent(materialId)}`, {
+// const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales/${encodeURIComponent(materialId)}`, {
 //       method: "PUT",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify({ cantidad: quantity }),
@@ -177,7 +177,7 @@ async function cargarMateriales() {
   try {
     console.log("[v0] Cargando materiales desde la BD...")
 
-    const response = await fetch("http://localhost:3000/materiales")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales")
     console.log("[v0] Respuesta del servidor - Status:", response.status)
 
     if (!response.ok) {
@@ -265,7 +265,7 @@ function renderizarMateriales(materiales) {
 
 async function cargarMaterialesSelect() {
   try {
-    const response = await fetch("http://localhost:3000/materiales");
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales");
     if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
 
     const materiales = await response.json();
@@ -328,7 +328,7 @@ async function guardarTodosMateriales() {
   try {
     // Guardar cada material individualmente
     for (const mat of materialesPendientes) {
-      const response = await fetch(`http://localhost:3000/materiales/${mat.id_materiales}`, {
+      const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales/${mat.id_materiales}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cantidad: mat.cantidad }),
@@ -399,3 +399,4 @@ if (saveAllBtn) {
 
   console.log("[v0] Inicialización completa");
 });
+

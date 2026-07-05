@@ -131,7 +131,7 @@ registerForm.addEventListener("submit", async (e) => {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -177,5 +177,7 @@ backToLoginBtn.addEventListener("click", () => {
     }
   });
 });
+
+
 
 

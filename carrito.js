@@ -21,7 +21,7 @@ async function mostrarUsuario() {
 
   // Obtener datos completos del usuario con carrera
   try {
-    const response = await fetch(`http://localhost:3000/usuario/${usuario.id_usuario}`);
+    const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuario/${usuario.id_usuario}`);
     const userData = await response.json();
     
     document.getElementById("userName").textContent = userData.nombre_completo;
@@ -192,7 +192,7 @@ if (id_docente === "" || id_docente === null) {
   teacherSelect.options[teacherSelect.selectedIndex].textContent;
 
 
-    const response = await fetch("http://localhost:3000/vales-prestamo", {
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/vales-prestamo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
      body: JSON.stringify({
@@ -249,7 +249,7 @@ async function cargarDocentes() {
   const select = document.getElementById("docenteSelect");
 
   try {
-    const res = await fetch("http://localhost:3000/docentes");
+    const res = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/docentes");
     const docentes = await res.json();
 
     if (docentes.length === 0) {
@@ -271,3 +271,5 @@ async function cargarDocentes() {
     select.innerHTML = `<option value="">Error al cargar docentes</option>`;
   }
 }
+
+

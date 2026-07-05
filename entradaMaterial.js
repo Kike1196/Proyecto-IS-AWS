@@ -87,7 +87,7 @@ let categorias = []
 async function cargarCategorias() {
   try {
     console.log("[v0] Iniciando carga de categorías...")
-    const response = await fetch("http://localhost:3000/categorias")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias")
     console.log("[v0] Response status categorías:", response.status)
 
     if (!response.ok) {
@@ -171,7 +171,7 @@ function createMaterialCard(materialName, categoryName, available, defective) {
 async function cargarMateriales() {
   try {
     console.log("[v0] Iniciando carga de materiales...")
-    const response = await fetch("http://localhost:3000/materiales")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales")
     console.log("[v0] Response status materiales:", response.status)
 
     if (!response.ok) {
@@ -309,7 +309,7 @@ saveAllBtn.addEventListener("click", async () => {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/materiales/multiples", {
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales/multiples", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ materiales: materialesPendientes }),
@@ -362,4 +362,6 @@ function actualizarListaTemporal() {
     list.appendChild(li)
   })
 }
+
+
 

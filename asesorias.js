@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/asesorias"
+const API_URL = "http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/asesorias"
 
 // Guardar asesorías en memoria
 let asesorias = []
@@ -445,3 +445,4 @@ async function removerEstudiante(idAsesoria, idUsuario, botonElement) {
     }
   });
 }
+

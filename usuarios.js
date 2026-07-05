@@ -33,7 +33,7 @@ let filteredUsers = []
 
 async function cargarUsuarios() {
   try {
-    const response = await fetch("http://localhost:3000/usuarios")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuarios")
     if (!response.ok) throw new Error("Error al cargar usuarios")
 
     users = await response.json()
@@ -154,7 +154,7 @@ async function guardarCambiosUsuario(event) {
   const numeroControl = document.getElementById("editNumero").value
 
   try {
-    const response = await fetch(`http://localhost:3000/usuarios/${currentUserId}`, {
+    const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuarios/${currentUserId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nombre, email, numeroControl }),
@@ -184,7 +184,7 @@ async function asignarRol(event) {
   const user = users.find((u) => u.id === currentUserId)
 
   try {
-    const response = await fetch(`http://localhost:3000/usuarios/${currentUserId}/rol`, {
+    const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuarios/${currentUserId}/rol`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ rol: nuevoRolId }),
@@ -227,7 +227,7 @@ async function eliminarUsuario(userId) {
   }).then(async (result) => {
     if (result.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+        const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuarios/${userId}`, {
           method: "DELETE"
         })
 
@@ -242,3 +242,5 @@ async function eliminarUsuario(userId) {
     }
   })
 }
+
+

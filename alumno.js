@@ -124,7 +124,7 @@ function setupTabs() {
 async function fetchMaterials() {
   try {
     console.log("[Alumno] Cargando materiales desde backend...")
-    const response = await fetch("http://localhost:3000/materiales")
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales")
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
@@ -224,7 +224,7 @@ function setupCategoryDropdown() {
   if (!categoryBtn || !categoryMenu) return;
 
   // 1️⃣ Obtener categorías del backend
-  fetch("http://localhost:3000/categorias")
+  fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias")
     .then(res => res.json())
     .then(categorias => {
 
@@ -496,7 +496,7 @@ async function fetchSolicitudes() {
     console.log("[Alumno] Cargando solicitudes...")
 
     // Cambié el endpoint para buscar por ID de usuario
-    const response = await fetch(`http://localhost:3000/vales-prestamo/usuario/${usuario.id_usuario}`)
+    const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/vales-prestamo/usuario/${usuario.id_usuario}`)
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
@@ -654,7 +654,7 @@ const btn = document.querySelector(`button.devolver-btn[onclick*="${id_vales}"]`
     `;
 
     try {
-      const response = await fetch(`http://localhost:3000/vales-prestamo/${id_vales}/devolver`, {
+      const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/vales-prestamo/${id_vales}/devolver`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -735,13 +735,13 @@ async function fetchAndRenderAsesorias() {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     if (!usuario) return;
 
-    const response = await fetch("http://localhost:3000/alumno/asesorias");
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/alumno/asesorias");
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
     const asesorias = await response.json();
     
     // Obtener inscripciones del usuario
-    const inscripcionesResponse = await fetch(`http://localhost:3000/inscripciones/${usuario.id_usuario}`);
+    const inscripcionesResponse = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/inscripciones/${usuario.id_usuario}`);
     const inscripciones = await inscripcionesResponse.json();
     
     // Crear un set con los IDs de asesorías donde está inscrito
@@ -855,10 +855,10 @@ function renderAsesorias(asesorias, usuario, inscriptosSet) {
 function handleSearchAsesorias() {
   // Función helper para búsqueda
   const usuario = JSON.parse(localStorage.getItem("usuario"));
-  fetch(`http://localhost:3000/alumno/asesorias`)
+  fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/alumno/asesorias`)
     .then(res => res.json())
     .then(asesorias => {
-      fetch(`http://localhost:3000/inscripciones/${usuario.id_usuario}`)
+      fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/inscripciones/${usuario.id_usuario}`)
         .then(res => res.json())
         .then(inscripciones => {
           const inscriptosSet = new Set(inscripciones.map(i => i.id_crear_asesoria));
@@ -870,7 +870,7 @@ function handleSearchAsesorias() {
 // <CHANGE> Nueva función para solicitar asesoría
 async function solicitarAsesoria(idAsesoria, idUsuario, titulo) {
   try {
-    const response = await fetch("http://localhost:3000/inscribir", {
+    const response = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/inscribir", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -929,7 +929,7 @@ async function salirAsesoria(idAsesoria, idUsuario, titulo) {
   }).then(async (result) => {
     if (result.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:3000/inscripciones/${idUsuario}/${idAsesoria}`, {
+        const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/inscripciones/${idUsuario}/${idAsesoria}`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" }
         });
@@ -1028,7 +1028,7 @@ async function solicitarAsesoria(id_crear_asesoria) {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/inscribir", {
+    const res = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/inscribir", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1104,3 +1104,4 @@ function formatDate(dateString) {
   const options = { year: "numeric", month: "long", day: "numeric" }
   return new Date(dateString).toLocaleDateString("es-ES", options)
 }
+

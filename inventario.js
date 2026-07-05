@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function cargarCategorias() {
   try {
-    const res = await fetch("http://localhost:3000/categorias");
+    const res = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias");
     if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
 
     categorias = await res.json();
@@ -94,7 +94,7 @@ async function cargarMateriales(categoria = "", nombre = "") {
   lista.innerHTML = '<p style="text-align:center; color:#666; padding:2rem;">Cargando materiales...</p>';
 
   try {
-    const res = await fetch("http://localhost:3000/materiales");
+    const res = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales");
     const materiales = await res.json();
 
     const filtrados = materiales.filter((mat) => {
@@ -305,8 +305,8 @@ async function guardarCambios() {
     console.log("[v0] Cantidad disponible:", cantidadDisponibles)
     console.log("[v0] Cantidad de dañados:", cantidadDanados)
 
-const response = await fetch(`http://localhost:3000/materiales/editar/${materialEditando.id_materiales}`, {
-    //const response = await fetch(`http://localhost:3000/materiales/${encodeURIComponent(materialEditando.nombre)}`, {
+const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales/editar/${materialEditando.id_materiales}`, {
+    //const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/materiales/${encodeURIComponent(materialEditando.nombre)}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -423,7 +423,7 @@ btnAgregarCategoria.addEventListener("click", async () => {
 
   try {
     // Enviar al backend
-const resp = await fetch("http://localhost:3000/categorias", {
+const resp = await fetch("http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ descripcion })
@@ -480,7 +480,7 @@ btnEliminar.addEventListener("click", () => {
 
     if (result.isConfirmed) {
 
-      fetch(`http://localhost:3000/categorias/${cat.id_categoria}`, {
+      fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias/${cat.id_categoria}`, {
         method: "DELETE"
       })
         .then(res => res.json())
@@ -537,7 +537,7 @@ const btnEditar = document.createElement("button");
           const nuevaDescripcion = result.value.trim();
 
           // actualizar en backend
-          fetch(`http://localhost:3000/categorias/${cat.id_categoria}`, {
+          fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/categorias/${cat.id_categoria}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ descripcion: nuevaDescripcion })
@@ -582,3 +582,5 @@ li.appendChild(btnEditar);
     listaCategorias.appendChild(li);
   });
 }
+
+

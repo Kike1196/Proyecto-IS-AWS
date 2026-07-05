@@ -40,7 +40,7 @@ async function loadReceiptData() {
   document.getElementById("studentControlReceipt").textContent = usuario.id_usuario
 
   try {
-    const response = await fetch(`/usuario/${usuario.id_usuario}`)
+    const response = await fetch(`http://proyecto-is-backend-env.eba-vmx56ujg.us-east-1.elasticbeanstalk.com/usuario/${usuario.id_usuario}`)
     const usuarioData = await response.json()
     document.getElementById("studentCareerReceipt").textContent =
       usuarioData.carrera || usuarioData.nombre_carrera || "N/A"
@@ -74,3 +74,5 @@ async function loadReceiptData() {
 function printReceipt() {
   window.print()
 }
+
+
